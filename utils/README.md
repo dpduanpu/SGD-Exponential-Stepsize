@@ -47,7 +47,7 @@ T = train_epochs * math.ceil(train_size * (1 - val_ratio) / batchsize))
 ```
 Example usages are:
 ```shell
-python .\alpha_converter.py --optim-method 'SGD_Exp_Decay' --alpha 0.99 --train-epochs 100 --batchsize 128 --train-size 50000 --val-ratio 0.1
+python alpha_converter.py --optim-method 'SGD_Exp_Decay' --alpha 0.99 --train-epochs 100 --batchsize 128 --train-size 50000 --val-ratio 0.1
 
-python .\alpha_converter.py --optim-method 'SGD_1t_Decay' --etaT-eta0 0.01 --train-epochs 100 --batchsize 128 --train-size 50000 --val-ratio 0.1
+python alpha_converter.py --optim-method 'SGD_1t_Decay' --etaT-eta0 0.01 --train-epochs 100 --batchsize 128 --train-size 50000 --val-ratio 0.1
 ```
