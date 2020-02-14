@@ -1,7 +1,7 @@
 This folder contains some helper functions for generating commands for grid searching, processing hyperparameter tuning results, and drawing figures.
 
 ### `gen_fun_cmds.py`
-Mainly used for generating batch of commands for hyperparameter tuning as it can combine searching grids of a bunch of hyperparameters. Options are specified as flags (see --help for a detailed list and explanation). Nonetheless, we would like to point out two options specifically:
+Mainly used for generating batch of commands for hyperparameter tuning as it can combine searching grids of a bunch of hyperparameters. Commands will be saved in a sub-directory named `cmds` with the name from `--output-name`. Options are specified as flags (see --help for a detailed list and explanation). Nonetheless, we would like to point out two options specifically:
 * `--alpha-etaT-eta0`: if specified, the values you input for `--alphas` will be considered as <img src="https://render.githubusercontent.com/render/math?math=\eta_T/\eta_0"> and corresponding <img src="https://render.githubusercontent.com/render/math?math=\alpha"> will be automatically computed. To use this option, you need to also give the `--train-size` in order to calculate T. However, you don't need to deduct the validation set size manually, as the actual training data size will be automatically inferred from input arguments.
 * `--milestone-comb-order`: this option specifies how many elements can be picked from the `--milestone` argument at most to form a combination of milestones. An example might make it more clear. Suppose `--milestones` is [32000, 40000, 48000], then setting this option to 0 will take `--milestones` as is, namely [32000, 40000, 48000]. Setting this option to 1 will take [[32000], [40000], [48000]] as milestones. And setting this option to 2 will take [[32000], [40000], [48000], [32000 40000], [32000 48000], [40000 48000]] as milestone.
 
@@ -29,15 +29,15 @@ python gen_run_cmds.py --folder ./src --optim-methods SGD_Exp_Decay --eta0s 0.00
 ```
 
 ### `get_results.py`:
-Given the folder where all validation results for one experiment are stored, this script will merge all results into a CSV file for later fast look-up. It also computes best hyperparameters for each method based on validation accuracy, and generating corresponding commands for running test using best hyperparameters. Note that you should only put results obtained from the same dataset on a folder. For example:
+Given the folder where all validation results for one experiment are stored, this script will merge all results into a CSV file for later fast look-up. It also computes best hyperparameters for each method based on validation accuracy, and generating corresponding commands for running test using best hyperparameters. Generated files will be saved in a sub-directory named `tuning_results` with the name from `--output-name`. Note that you should only put results obtained from the same dataset on a folder. For example:
 ```
-python get_results.py --folder cifar10_decay_val --output-name cifar10_decay
+python get_results.py --folder ./logs/cifar10_decay_val --output-name cifar10_decay
 ```
 
 ### `draw_comps.py`
-This script simply takes the `folder` option which denotes the place where results to be drawn are stored. Like the above script, you should only put results obtained from the same dataset on one folder. For example:
+This script draws figures comparing different methods by simply taking the `folder` option which denotes the place where results to be drawn are stored. Like the above script, you should only put results obtained from the same dataset on one folder. For example:
 ```
-python draw_comps.py --folder cifar10_decay
+python draw_comps.py --folder ./logs/cifar10_decay
 ```
 
 ### `alpha_converter.py`
