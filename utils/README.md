@@ -37,7 +37,7 @@ python get_results.py --folder cifar10_decay_val --output-name cifar10_decay
 ### `draw_comps.py`
 This script simply takes the `folder` option which denotes the place where results to be drawn are stored. Like the above script, you should only put results obtained from the same dataset on one folder. For example:
 ```
-python draw_comps.py --folder cifar10_decay_vals
+python draw_comps.py --folder cifar10_decay
 ```
 
 ### `alpha_converter.py`
