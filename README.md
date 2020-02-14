@@ -14,6 +14,7 @@ Stochastic Gradient Descent (SGD) is a popular tool in large scale optimization 
 `utils` folder contains codes for generating running commands given a set of hyperparameter searching grids, finding the best hyperparamters from all tuning results, and drawing figures. Look inside the folder for details.
 
 ### Results
+Below, exponential decay means <img src="https://render.githubusercontent.com/render/math?math=\eta_t=\eta_0\cdot\alpha^t">, O(1/t) decay means &eta;<sub>t</sub> = &eta;<sub>0</sub>/(1+&alpha;t), and O(1/sqrt(t)) means &eta;<sub>t</sub> = &eta;<sub>0</sub>/(1+&alpha;&radic;t). They are variants of the vanilla SGD by using a decaying step size instead of a constant one.
 
 #### Compare [Adam](https://arxiv.org/abs/1412.6980), exponential decay, O(1/t) decay, and O(1/sqrt(t)) decay for training a 20-layer Residual Network to do image classification on CIFAR-10:
 <p float="left">
